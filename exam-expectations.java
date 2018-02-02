@@ -6,9 +6,10 @@ Math functions
 - exponents
 - square roots
 - random numbers
-*/
 
-/* Recursion
+- Binary and Octal
+
+Recursion
  - be able to recognize and read 
  = doesn't necessarily tell you it is recursive
  - don't need to actually write it

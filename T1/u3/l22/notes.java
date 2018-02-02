@@ -8,9 +8,9 @@ word3 = word1 + word2;
 /* 
 * Methods: tools to change the data/work on the classes themselves
 
-.equal()
+.equals()
 - can't use ==
-- instead, use .equal()
+- instead, use .equals()
 - built-in method for strings
 - tests if contents are exactly equal (upper and lowercase)
 
