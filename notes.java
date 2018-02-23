@@ -33,6 +33,8 @@ System.out.println((int)(Math.random() * 100) + 1); // getting random integers f
 // want numbers from -20 and positive 20 inclusive
 System.out.println((int)(Math.random() * 41) + -20); // 41 numbers in that range, lowest number is -20
 
+// getting number of digits of an integer
+int length = String.valueOf(number).length();
 --
 // You CAN have two if statements together, ex:
 if (month == 4)
@@ -52,6 +54,10 @@ w1 = w3.substring(2); // returns ana
 int [] a = new int[4];
 int[] a = {1,2,3,4};
 --
+// Methods
+// Returning arrays
+return new int [] {1, 2, 3};
+
 // Recursion
 // Recursive methods have a call to iself (the recursion)
 // and a base case to stop the recursion, usually an if statement
@@ -75,3 +81,17 @@ public static int mystery(int n) {
     mystery(n - 1);
 }
 
+/* 
+ArrayList methods 
+
+| list.add(e)    | adds e to end of list        |
+|----------------|------------------------------|
+| list.add(i, e) | adds e to location i         |
+|----------------|------------------------------|
+| list.set(i, e) | change value at index i to e |
+|----------------|------------------------------|
+| list.get(i)    | returns value at i           |
+|----------------|------------------------------|
+| list.remove(i) | removes element at i         |
+
+*/
