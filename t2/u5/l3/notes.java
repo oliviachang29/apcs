@@ -27,9 +27,10 @@ Instantiation: create a variable in memory
 Constructor: method in a class that builds class in memory
 - sets values in variables
 - has the same name as class 
-- can have more than one (difference signatures)
-- never have a return type
+- can have more than one (difference is signatures), can call each other
+- never have a return type or void
 - always public
+- this() inside a constructor must be the first line
 
 - Constuctors build objects
 - the *new* command calls the constructor method in the class
