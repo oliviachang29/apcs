@@ -32,6 +32,8 @@ System.out.println((int)(Math.random() * 100)); // getting random integers from 
 System.out.println((int)(Math.random() * 100) + 1); // getting random integers from (1, 100) - bumps everything up by 1
 // want numbers from -20 and positive 20 inclusive
 System.out.println((int)(Math.random() * 41) + -20); // 41 numbers in that range, lowest number is -20
+// max, min
+Math.random()*(max-min+1)+min;
 
 // getting number of digits of an integer
 int length = String.valueOf(number).length();
