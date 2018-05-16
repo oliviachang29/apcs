@@ -27,43 +27,42 @@ public class Gameboard {
 
 	public boolean move (int x, int y, boolean left) {
 		// check if it can jump another piece forward left/right
-		// if (jump(x, y)) {
-		// 	return true;
-		// } else 
-		if (board[y][x] != '-') {
+		if (jump(x, y)) {
+			return true;
+		} else if (board[x][y] != '-' && x >= 0 && x <= 7 && y >= 0 && y <= 7) {
 			int a = 0;
 			int b = 0;
 			// did player want to move forward left, or forward right?
 			if (left) {
-				if (board[y][x] == 'r') { // red
+				if (board[x][y] == 'r') { // red
 					if (x == 7) {
 						return false;
 					}
-					a = y+1; b = x+1;
-				} else if (board[y][x] == 'w') { // white
+					a = x+1; b = y+1;
+				} else if (board[x][y] == 'w') { // white
 					if (x == 0) {
 						return false;
 					}
-					a = y-1; b = x-1;
+					a = x-1; b = y-1;
 				}
 			} else {
-				if (board[y][x] == 'r') { // red
+				if (board[x][y] == 'r') { // red
 					if (x == 0) {
 						return false;
 					}
-					a = y+1; b = x-1;
-				} else if (board[y][x] == 'w') { // white
+					a = x+1; b = y-1;
+				} else if (board[x][y] == 'w') { // white
 					if (x == 7) {
 						return false;
 					}
-					a = y-1; b = x+1;
+					a = x-1; b = y+1;
 				}
 			}
 
 			// check if it can move left, if so, move
 			if (board[a][b] == '-') {
-				board[a][b] = board[y][x];
-				board[y][x] = '-';
+				board[a][b] = board[x][y];
+				board[x][y] = '-';
 				return true;
 			}
 		}
@@ -76,33 +75,33 @@ public class Gameboard {
 		int b = 0;
 		int c = 0;
 		int d = 0;
-		if (board[y][x] != '-') {
-			if (board[y][x] == 'r') {
+		if (board[x][y] != '-' && x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+			if (board[x][y] == 'r') {
 				// x != 6, 7 because then it is jumping off (if jumping left)
 				// x != 0, 1 because then it is jumping off (if jumping right)
-				if (x != 6 && x != 7 && board[y+1][x+1] == 'w' && board[y+2][x+2] == '-') { // check left
-					a = y+1; b = x+1; c = y+2; d = x+2;
-				} else if (x != 0 && x != 1 && board[y+1][x-1] == 'w' && board[y+2][x-2] == '-') { // check right
-					a = y+1; b = x-1; c = y+2; d = x-2;
+				if (y != 6 && y != 7 && board[x+1][y+1] == 'w' && board[x+2][y+2] == '-') { // check left
+					a = x+1; b = y+1; c = x+2; d = y+2;
+				} else if (y != 0 && y != 1 && board[x+1][y-1] == 'w' && board[x+2][y-2] == '-') { // check right
+					a = x+1; b = y-1; c = x+2; d = y-2;
 				} else {
 					return false;
 				}
-			} else if (board[y][x] == 'w') {
+			} else if (board[x][y] == 'w') {
 				// x != 6, 7 because then it is jumping off (if jumping right)
 				// x != 0, 1 because then it is jumping off (if jumping left)
-				if (x != 0 && x != 1 && board[y-1][x-1] == 'r' && board[y-2][x-2] == '-') { // check left
-					a = y-1; b = x-1; c = y-2; d = x-2;
-				} else if (x != 6 && x != 7 && board[y-1][x+1] == 'r' && board[y-2][x+2] == '-') { // check right
-					a = y-1; b = x+1; c = y-2; d = x+2;
+				if (y != 0 && y != 1 && board[x-1][y-1] == 'r' && board[x-2][y-2] == '-') { // check left
+					a = x-1; b = y-1; c = x-2; d = y-2;
+				} else if (y != 6 && y != 7 && board[x-1][y+1] == 'r' && board[x-2][y+2] == '-') { // check right
+					a = x-1; b = y+1; c = x-2; d = y+2;
 				} else {
 					return false;
 				}
 			}
 			board[a][b] = '-'; // capture opponent
-			board[c][d] = board[y][x]; // move [y][x] to new spot [c][d]
-			board[y][x] = '-'; // remove piece at [y][x]
+			board[c][d] = board[x][y]; // move [y][x] to new spot [c][d]
+			board[x][y] = '-'; // remove piece at [y][x]
 			// System.out.println(this.toString());
-			jump(d, c);
+			jump(c, d);
 			return true;
 		}
 		return false;
@@ -121,8 +120,7 @@ public class Gameboard {
 
 	public String toString() {
 		String temp = ""; // add 2 spaces for numbered board
-		// uncomment for numbered board
-		// for (int k = 0; k < 8; k++) {
+		// for (int k = 0; k < 8; k++) { // uncomment for numbered board
 		// 	temp += k + " ";
 		// }
 		// temp += "\n";
